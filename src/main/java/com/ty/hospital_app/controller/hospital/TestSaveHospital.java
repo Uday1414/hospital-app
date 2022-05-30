@@ -4,6 +4,7 @@ import com.ty.hospital_app.dto.Hospital;
 import com.ty.hospital_app.service.Impl.HospitalServiceImpl;
 
 public class TestSaveHospital {
+	//this class is for testing saveHospital.
 	public static void main(String[] args) {
 		Hospital hospital = new Hospital();
 		hospital.setHospital_name("Manipal");

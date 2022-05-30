@@ -8,7 +8,7 @@ public class TestUpdateBranchById {
 		BranchServiceImpl branchServiceImpl = new BranchServiceImpl();
 		Branch branch = new Branch();
 		branch.setBranchName("Marathahalli");
-		branch.setBranch_email("Marcln@mail.com");
+		branch.setBranch_email("Marathallicln@mail.com");
 		branch.setBranch_phone(778556166);
 		Branch branch2 = branchServiceImpl.updateBranchById(2,branch );
 		if(branch2!=null) {

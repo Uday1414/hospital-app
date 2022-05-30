@@ -4,6 +4,7 @@ import com.ty.hospital_app.dto.Hospital;
 import com.ty.hospital_app.service.Impl.HospitalServiceImpl;
 
 public class TestGetHospitalById {
+	//this class is for testing getHospitalById.
 	public static void main(String[] args) {
 		HospitalServiceImpl hospitalServiceImpl = new HospitalServiceImpl();
 		Hospital hospital = hospitalServiceImpl.getHospitalById(2);

@@ -16,26 +16,40 @@ public class AddressDaoImpl implements AddressDao {
 	EntityTransaction entityTransaction = entityManager.getTransaction();
 
 	public Address saveAddress(int branch_id, Address address) {
-		Branch branch=entityManager.find(Branch.class, branch_id);
+		Branch branch = entityManager.find(Branch.class, branch_id);
 		address.setBranch(branch);
 		entityTransaction.begin();
 		entityManager.persist(address);
 		entityTransaction.commit();
-		return entityManager.find(Address.class,address.getAddress_id());
+		return entityManager.find(Address.class, address.getAddress_id());
 	}
 
 	public boolean deleteAddressById(int address_id) {
-		// TODO Auto-generated method stub
-		return false;
+		Address address = entityManager.find(Address.class, address_id);
+		if (address != null) {
+			entityTransaction.begin();
+			entityManager.remove(address);
+			entityTransaction.commit();
+			return true;
+		} else {
+			return false;
+		}
 	}
-
+	
+	@Override
 	public Address getAddressById(int address_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Address.class, address_id);
 	}
 
 	public Address updateAddressById(int address_id, Address address) {
-		// TODO Auto-generated method stub
+		Address address1 = entityManager.find(Address.class, address_id);
+		if(address1!=null) {
+			address.setAddress_id(address_id);
+			entityTransaction.begin();
+			entityManager.merge(address);
+			entityTransaction.commit();
+			return entityManager.find(Address.class,address.getAddress_id());
+		}
 		return null;
 	}
 

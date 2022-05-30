@@ -41,6 +41,7 @@ public class BranchDaoImpl implements BranchDao {
 		Branch branch2 = entityManager.find(Branch.class, branch_id);
 		if (branch2 != null) {
 			branch.setBranch_id(branch_id);
+			branch.setHospital(branch2.getHospital());
 			entityTransaction.begin();
 			entityManager.merge(branch);
 			entityTransaction.commit();
