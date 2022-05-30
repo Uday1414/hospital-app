@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -17,6 +18,7 @@ public class Observation {
 	private String status;
 	private String remarks;
 	@ManyToOne
+	@JoinColumn
 	private Encounter encounter;
 
 	public int getObservation_id() {

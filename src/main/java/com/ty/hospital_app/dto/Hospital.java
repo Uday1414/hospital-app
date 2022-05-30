@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity
+@Entity//this entity creates hospital table in database.
 public class Hospital {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Hospital {
 	private String hospital_website;
 	private String hospital_gstnumber;
 
-	@OneToMany
+	@OneToMany(mappedBy = "hospital")
 	private List<Branch> branchs;
 
 	public int getHospital_id() {

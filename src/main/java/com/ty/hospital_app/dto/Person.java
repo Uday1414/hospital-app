@@ -16,7 +16,7 @@ public class Person {
 	private String person_name;
 	private long person_phone;
 	private String person_email;
-	@OneToMany
+	@OneToMany(mappedBy = "person")
 	private List<Encounter> encounters;
 
 	public int getPerson_id() {

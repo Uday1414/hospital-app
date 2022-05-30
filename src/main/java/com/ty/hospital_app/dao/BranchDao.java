@@ -16,6 +16,6 @@ public interface BranchDao {
 
 	boolean deleteBranchById(int branch_id);
 
-	List<Branch> getAllBranches();
+	List<Branch> getAllBranchesByhospiptalId(int hospital_id);
 
 }

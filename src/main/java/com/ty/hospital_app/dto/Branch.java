@@ -6,10 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+//this entity creates branch table in database.
 @Entity
 public class Branch {
 	@Id
@@ -18,13 +19,14 @@ public class Branch {
 	private String branchName;
 	private long branch_phone;
 	private String branch_email;
-	@OneToOne
+	@OneToOne(mappedBy = "branch")
 	private Address address;
 	@ManyToOne
+	@JoinColumn
 	private Hospital hospital;
-	@OneToMany
+	@OneToMany(mappedBy = "branch")
 	private List<Encounter> encounters;
-	@OneToMany
+	@OneToMany(mappedBy = "branch")
 	private List<User> users;
 
 	public int getBranch_id() {
