@@ -2,6 +2,7 @@ package com.ty.hospital_app.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class Hospital {
 	private String hospital_website;
 	private String hospital_gstnumber;
 
-	@OneToMany(mappedBy = "hospital")
+	@OneToMany(mappedBy = "hospital" , cascade = CascadeType.REMOVE)
 	private List<Branch> branchs;
 
 	public int getHospital_id() {

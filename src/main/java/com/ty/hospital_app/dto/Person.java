@@ -2,6 +2,7 @@ package com.ty.hospital_app.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ public class Person {
 	private String person_name;
 	private long person_phone;
 	private String person_email;
-	@OneToMany(mappedBy = "person")
+	@OneToMany(mappedBy = "person" , cascade = CascadeType.REMOVE)
 	private List<Encounter> encounters;
 
 	public int getPerson_id() {

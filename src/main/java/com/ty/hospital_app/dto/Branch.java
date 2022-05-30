@@ -2,6 +2,7 @@ package com.ty.hospital_app.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,14 +20,14 @@ public class Branch {
 	private String branchName;
 	private long branch_phone;
 	private String branch_email;
-	@OneToOne(mappedBy = "branch")
+	@OneToOne(mappedBy = "branch" , cascade = CascadeType.REMOVE)
 	private Address address;
 	@ManyToOne
 	@JoinColumn
 	private Hospital hospital;
-	@OneToMany(mappedBy = "branch")
+	@OneToMany(mappedBy = "branch" , cascade = CascadeType.REMOVE)
 	private List<Encounter> encounters;
-	@OneToMany(mappedBy = "branch")
+	@OneToMany(mappedBy = "branch" , cascade = CascadeType.REMOVE)
 	private List<User> users;
 
 	public int getBranch_id() {

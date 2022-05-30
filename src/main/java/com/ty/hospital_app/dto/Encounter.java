@@ -3,6 +3,7 @@ package com.ty.hospital_app.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,9 +23,9 @@ public class Encounter {
 	@ManyToOne
 	@JoinColumn
 	private Branch branch;
-	@OneToMany(mappedBy = "encounter")
+	@OneToMany(mappedBy = "encounter" , cascade = CascadeType.REMOVE)
 	private List<MedOrder> medOrders;
-	@OneToMany(mappedBy = "encounter")
+	@OneToMany(mappedBy = "encounter" , cascade = CascadeType.REMOVE)
 	private List<Observation> observations;
 	@ManyToOne
 	@JoinColumn
@@ -71,6 +72,12 @@ public class Encounter {
 	}
 	public void setObservations(List<Observation> observations) {
 		this.observations = observations;
+	}
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 	
 	
