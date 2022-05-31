@@ -24,7 +24,6 @@ public class EncounterDaoImpl implements EncounterDao {
 		Branch branch = entityManager.find(Branch.class, branch_id);
 		Person person = entityManager.find(Person.class, person_id);
 		encounter.setBranch(branch);
-		System.out.println(person);
 		encounter.setPerson(person);
 		entityTransaction.begin();
 		entityManager.persist(encounter);

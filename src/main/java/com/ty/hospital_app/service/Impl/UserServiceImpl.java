@@ -8,10 +8,7 @@ import com.ty.hospital_app.service.UserService;
 
 public class UserServiceImpl implements UserService {
 	UserDaoImpl userDaoImpl = new UserDaoImpl();
-	@Override
-	public User saveUser(User user) {
-		return userDaoImpl.saveUser(user);
-	}
+	
 
 	@Override
 	public User updateUser(int user_id, User u) {
@@ -41,6 +38,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User validateUser(String user_email, String user_password) {
 		return userDaoImpl.validateUser(user_email, user_password);
+	}
+
+	@Override
+	public User saveUser(User user, int branch_id) {
+		return userDaoImpl.saveUser(user, branch_id);
 	}
 
 }

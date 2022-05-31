@@ -17,6 +17,7 @@ public class ObservationDaoImpl implements ObservationDao {
 	EntityManager entityManager = entityManagerFactory.createEntityManager();
 	EntityTransaction entityTransaction = entityManager.getTransaction();
 
+	
 	@Override
 	public Observation saveObservation(Observation observation, int encouonter_id) {
 		Encounter encounter = entityManager.find(Encounter.class, encouonter_id);

@@ -18,17 +18,17 @@ public class TestSaveMedOrder {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		MedOrderServiceImpl medOrderServiceImpl = new MedOrderServiceImpl();
 		List<Item> items = new ArrayList<>();
-		//items.add(entityManager.find(Item.class,1));
+		items.add(entityManager.find(Item.class,1));
 		items.add(entityManager.find(Item.class,2));
 		items.add(entityManager.find(Item.class,3));
 		MedOrder medOrder = new MedOrder();
 		medOrder.setItems(items);
 		double total = 0;
 		for (Item item : items) {
-			total += item.getItem_cost();
+			total += item.getItem_cost()*item.getItem_quantity();
 		}
-		medOrder.setTotal(total);
-		MedOrder medOrder2 = medOrderServiceImpl.saveMedOrder(9, medOrder);
+		medOrder.setTotal(500);
+		MedOrder medOrder2 = medOrderServiceImpl.saveMedOrder(8, medOrder);
 		if(medOrder2!=null) {
 			System.out.println("Saved");
 		}else {

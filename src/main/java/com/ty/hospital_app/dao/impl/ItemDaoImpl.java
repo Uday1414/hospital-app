@@ -48,6 +48,7 @@ public class ItemDaoImpl implements ItemDao {
 		Item item1 = entityManager.find(Item.class, item_id);
 		if (item1 != null) {
 			item.setItem_id(item1.getItem_id());
+			item.setMedOrder(item1.getMedOrder());
 			entityTransaction.begin();
 			entityManager.merge(item);
 			entityTransaction.commit();

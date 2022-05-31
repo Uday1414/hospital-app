@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import com.ty.hospital_app.dao.UserDao;
+import com.ty.hospital_app.dto.Branch;
 import com.ty.hospital_app.dto.User;
 
 public class UserDaoImpl implements UserDao {
@@ -17,22 +18,14 @@ public class UserDaoImpl implements UserDao {
 	EntityTransaction entityTransaction = entityManager.getTransaction();
 
 	@Override
-	public User saveUser(User user) {
-		entityTransaction.begin();
-		entityManager.persist(user);
-		entityTransaction.commit();
-		return entityManager.find(User.class, user.getUser_id());
-	}
-
-	@Override
 	public User updateUser(int user_id, User u) {
 		User user = entityManager.find(User.class, user_id);
 		if (user != null) {
-			u.setUser_id(user.getUser_id());
+			user.setUser_name(u.getUser_name());;
 			entityTransaction.begin();
 			entityManager.merge(user);
 			entityTransaction.commit();
-			return entityManager.find(User.class, u.getUser_id());
+			return entityManager.find(User.class, user.getUser_id());
 		} else {
 			return null;
 		}
@@ -71,11 +64,21 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User validateUser(String user_email, String user_password) {
-		Query query = entityManager.createQuery("SELECT u FROM User u.user_email=?1 AND u.user_password=?2");
+		Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.user_email=?1 AND u.user_password=?2");
 		query.setParameter(1, user_email);
 		query.setParameter(2, user_password);
 		List<User> users= query.getResultList();
 		return users.get(0);
+	}
+
+	@Override
+	public User saveUser(User user, int branch_id) {
+		Branch branch = entityManager.find(Branch.class,branch_id);
+		user.setBranch(branch);
+		entityTransaction.begin();
+		entityManager.persist(user);
+		entityTransaction.commit();
+		return entityManager.find(User.class, user.getUser_id());
 	}
 
 }

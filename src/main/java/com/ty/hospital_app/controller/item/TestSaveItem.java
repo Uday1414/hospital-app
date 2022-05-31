@@ -7,9 +7,9 @@ public class TestSaveItem {
 	public static void main(String[] args) {
 		ItemServiceImpl implItemServiceImpl = new ItemServiceImpl();
 		Item item = new Item();
-		item.setItem_name("Glucose");
+		item.setItem_name("vicks");
 		item.setItem_quantity(1);
-		item.setItem_cost(120);
+		item.setItem_cost(5);
 		
 		if(implItemServiceImpl.saveItem(item)!=null) {
 			System.out.println("Saved");

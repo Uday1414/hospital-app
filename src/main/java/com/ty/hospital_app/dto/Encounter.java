@@ -72,6 +72,12 @@ public class Encounter {
 	public void setObservations(List<Observation> observations) {
 		this.observations = observations;
 	}
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 	
 	
 }

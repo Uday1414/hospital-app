@@ -10,9 +10,9 @@ public class TestUpdateEncounterById {
 		EncounterServiceImpl encounterServiceImpl = new EncounterServiceImpl();
 		Encounter encounter = new Encounter();
 		encounter.setAdmitDateAndTime(LocalDateTime.now());
-		encounter.setReason("malari");
+		encounter.setReason("cancer");
 		encounter.setDischargeDateAndTime(LocalDateTime.now());
-		Encounter encounter1 = encounterServiceImpl.updateEncounterById(9, encounter);
+		Encounter encounter1 = encounterServiceImpl.updateEncounterById(10, encounter);
 		if(encounter1!=null) {
 			System.out.println("Updated");
 		}else {
