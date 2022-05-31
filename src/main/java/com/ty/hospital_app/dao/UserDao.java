@@ -6,7 +6,7 @@ import com.ty.hospital_app.dto.User;
 
 public interface UserDao {
 
-	User saveUser(User user);
+	User saveUser(User user , int branch_id);
 
 	User updateUser(int user_id, User u);
 
